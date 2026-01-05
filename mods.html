@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blueisatlantic - GTA 5 Mods</title>
+    <title>Mods - blueisatlantic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -134,6 +134,14 @@
             transform: translateX(-50%) scaleX(1);
         }
 
+        nav a.active {
+            color: var(--primary);
+        }
+
+        nav a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
         .logo {
             font-weight: 700;
             font-size: 18px;
@@ -143,37 +151,18 @@
             background-clip: text;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Mods Page Content */
+        .mods-page {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 120px 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
             text-align: center;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            letter-spacing: -2px;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.4s both;
-            font-weight: 300;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         @keyframes fadeInUp {
@@ -187,54 +176,10 @@
             }
         }
 
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 16px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Mods Grid */
-        .mods-section {
-            max-width: 1400px;
-            margin: 100px auto;
-            padding: 0 40px;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, var(--text), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -242,11 +187,20 @@
             letter-spacing: -1px;
         }
 
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 18px;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .mods-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 30px;
-            margin-bottom: 100px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .mod-card {
@@ -255,12 +209,23 @@
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 30px;
+            padding: 40px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            animation: fadeInUp 0.8s ease-out both;
         }
+
+        .mod-card:nth-child(1) { animation-delay: 0.1s; }
+        .mod-card:nth-child(2) { animation-delay: 0.2s; }
+        .mod-card:nth-child(3) { animation-delay: 0.3s; }
+        .mod-card:nth-child(4) { animation-delay: 0.4s; }
 
         .mod-card::before {
             content: '';
@@ -287,23 +252,24 @@
         .mod-card-content {
             position: relative;
             z-index: 1;
+            flex: 1;
         }
 
         .mod-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 40px;
             box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+            flex-shrink: 0;
         }
 
         .mod-card h3 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
             margin-bottom: 12px;
             color: var(--text);
@@ -311,7 +277,7 @@
 
         .mod-card p {
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.7;
             margin-bottom: 20px;
             font-weight: 300;
@@ -322,6 +288,7 @@
             gap: 20px;
             font-size: 13px;
             color: var(--text-muted);
+            flex-wrap: wrap;
         }
 
         .stat {
@@ -343,52 +310,20 @@
             50% { opacity: 0.3; }
         }
 
-        /* Features Section */
-        .features {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 0 40px;
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(0, 212, 255, 0.3);
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px var(--primary));
-        }
-
-        .feature-item h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text);
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: 300;
+        .status-badge.coming-soon {
+            background: rgba(255, 165, 0, 0.1);
+            color: #ffa500;
+            border: 1px solid rgba(255, 165, 0, 0.3);
         }
 
         /* Footer */
@@ -405,47 +340,6 @@
             color: var(--text-muted);
             font-size: 14px;
             font-weight: 300;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
-        }
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Responsive */
@@ -466,12 +360,24 @@
                 font-size: 16px;
             }
 
-            .mods-grid {
-                grid-template-columns: 1fr;
+            .mods-page {
+                padding: 100px 20px 60px;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .mod-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .mod-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .mod-card h3 {
+                font-size: 24px;
             }
         }
 
@@ -500,109 +406,55 @@
     <nav>
         <ul>
             <li><a href="index.html" class="logo">blueisatlantic</a></li>
-            <li><a href="mods.html">Mods</a></li>
-            <li><a href="#features">Features</a></li>
+            <li><a href="mods.html" class="active">Mods</a></li>
+            <li><a href="index.html#features">Features</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>blueisatlantic</h1>
-        <p>Creating GTA 5 mods. Explore my work and upcoming projects.</p>
-        <a href="mods.html" class="cta-button">Explore Mods</a>
-    </section>
+    <div class="mods-page">
+        <div class="page-header">
+            <h1>My Mods</h1>
+            <p>Browse through my collection of GTA 5 modifications and tools</p>
+        </div>
 
-    <section class="mods-section" id="mods">
-        <h2 class="section-title fade-in">My Mods</h2>
         <div class="mods-grid">
-            <a href="tornadov.html" style="text-decoration: none; color: inherit;">
-                <div class="mod-card fade-in">
-                    <div class="mod-card-content">
-                        <div class="mod-icon">🌪️</div>
-                        <h3>TornadoV</h3>
-                        <p>Experience realistic tornado simulation in San Andreas with destructive physics and customizable tornado behavior.</p>
-                        <div class="mod-stats">
-                            <div class="stat">
-                                <span class="stat-dot"></span>
-                                <span>Available Now</span>
-                            </div>
-                            <div class="stat">
-                                <span style="color: var(--primary);">View Details →</span>
-                            </div>
+            <a href="tornadov.html" class="mod-card">
+                <div class="mod-icon">🌪️</div>
+                <div class="mod-card-content">
+                    <h3>TornadoV</h3>
+                    <p>Experience realistic tornado simulation in San Andreas with destructive physics and customizable tornado behavior.</p>
+                    <div class="mod-stats">
+                        <div class="stat">
+                            <span class="stat-dot"></span>
+                            <span>Available Now</span>
                         </div>
+                        <span class="status-badge">Released</span>
                     </div>
                 </div>
             </a>
 
-            <a href="bluev-explorer.html" style="text-decoration: none; color: inherit;">
-                <div class="mod-card fade-in">
-                    <div class="mod-card-content">
-                        <div class="mod-icon">📦</div>
-                        <h3>BlueV Explorer</h3>
-                        <p>A powerful tool for reading and modifying .rpf files. Simplify your modding workflow with an intuitive interface and advanced features.</p>
-                        <div class="mod-stats">
-                            <div class="stat">
-                                <span class="stat-dot"></span>
-                                <span>Coming Soon</span>
-                            </div>
-                            <div class="stat">
-                                <span style="color: var(--primary);">View Details →</span>
-                            </div>
+            <a href="bluev-explorer.html" class="mod-card">
+                <div class="mod-icon">📦</div>
+                <div class="mod-card-content">
+                    <h3>BlueV Explorer</h3>
+                    <p>A powerful tool for reading and modifying .rpf files. Fixes OpenIV's biggest limitation—supports GTA V Enhanced Edition.</p>
+                    <div class="mod-stats">
+                        <div class="stat">
+                            <span class="stat-dot"></span>
+                            <span>In Development</span>
                         </div>
+                        <span class="status-badge coming-soon">Coming Soon</span>
                     </div>
                 </div>
             </a>
         </div>
-    </section>
-
-    <section class="features" id="features">
-        <h2 class="section-title fade-in">About My Work</h2>
-        <div class="features-grid">
-            <div class="feature-item fade-in">
-                <div class="feature-icon">⚡</div>
-                <h4>Performance Focused</h4>
-                <p>Trying to offer you the best performance and optimization for all of my mods.</p>
-            </div>
-            <div class="feature-item fade-in">
-                <div class="feature-icon">🔄</div>
-                <h4>Regular Updates</h4>
-                <p>Continuous improvements and compatibility updates with the latest game versions.</p>
-            </div>
-            <div class="feature-item fade-in">
-                <div class="feature-icon">📖</div>
-                <h4>Easy to Use</h4>
-                <p>Detailed documentation and straightforward installation process for all skill levels.</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <footer>
         <p>&copy; 2026 BlueIsAtlantic. Creating mods for the GTA community.</p>
-        <div class="social-links">
-            <a href="#" title="Discord">💬</a>
-            <a href="#" title="GitHub">📦</a>
-            <a href="#" title="YouTube">📺</a>
-        </div>
     </footer>
 
     <script>
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -615,11 +467,6 @@
                     });
                 }
             });
-        });
-
-        // Add staggered animation delay to cards
-        document.querySelectorAll('.mod-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
